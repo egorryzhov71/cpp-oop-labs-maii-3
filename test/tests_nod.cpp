@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 #include "nod.h"
 
-
 TEST(NODTests, BasicCases) {
     EXPECT_EQ(calculateNOD(12, 18), 6);
     EXPECT_EQ(calculateNOD(18, 12), 6);  
