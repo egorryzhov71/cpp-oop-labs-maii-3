@@ -1,0 +1,5 @@
+if(EXISTS "/workspaces/C++/build/nod_tests[1]_tests.cmake")
+  include("/workspaces/C++/build/nod_tests[1]_tests.cmake")
+else()
+  add_test(nod_tests_NOT_BUILT nod_tests_NOT_BUILT)
+endif()

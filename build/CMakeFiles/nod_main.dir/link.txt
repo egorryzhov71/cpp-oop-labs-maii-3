@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/nod_main.dir/src/main.cpp.o -o nod_main  libnod_lib.a 

@@ -1,0 +1,5 @@
+/workspaces/C++/build/CMakeFiles/nod_lib.dir
+/workspaces/C++/build/CMakeFiles/nod_main.dir
+/workspaces/C++/build/CMakeFiles/nod_tests.dir
+/workspaces/C++/build/CMakeFiles/edit_cache.dir
+/workspaces/C++/build/CMakeFiles/rebuild_cache.dir
