@@ -33,14 +33,14 @@ TEST(FiveTest, PlusWithCarry) {
     Five num1("44");
     Five num2("1");
     Five result = num1.plus(num2);
-    EXPECT_EQ(result.tostring(), "100"); // 44₅ + 1₅ = 100₅ (24 + 1 = 25)
+    EXPECT_EQ(result.tostring(), "100");
 }
 
 TEST(FiveTest, Minus) {
     Five num1("20");
     Five num2("3");
     Five result = num1.minus(num2);
-    EXPECT_EQ(result.tostring(), "12"); // 20₅ - 3₅ = 12₅ (10 - 3 = 7)
+    EXPECT_EQ(result.tostring(), "12");
 }
 
 TEST(FiveTest, MinusWhenImpossible) {
