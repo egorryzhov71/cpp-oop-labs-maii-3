@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/nod_tests.dir/test/tests_nod.cpp.o -o nod_tests  libnod_lib.a /usr/lib/x86_64-linux-gnu/libgtest_main.a /usr/lib/x86_64-linux-gnu/libgtest.a 

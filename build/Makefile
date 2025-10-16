@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /workspaces/C++/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -84,6 +94,51 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -117,115 +172,157 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named nod_lib
+# Target rules for targets named lab2
 
 # Build rule for target.
-nod_lib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nod_lib
-.PHONY : nod_lib
+lab2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2
+.PHONY : lab2
 
 # fast build rule for target.
-nod_lib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_lib.dir/build.make CMakeFiles/nod_lib.dir/build
-.PHONY : nod_lib/fast
+lab2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/build
+.PHONY : lab2/fast
 
 #=============================================================================
-# Target rules for targets named nod_main
+# Target rules for targets named tests_fivee
 
 # Build rule for target.
-nod_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nod_main
-.PHONY : nod_main
+tests_fivee: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests_fivee
+.PHONY : tests_fivee
 
 # fast build rule for target.
-nod_main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_main.dir/build.make CMakeFiles/nod_main.dir/build
-.PHONY : nod_main/fast
+tests_fivee/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/build
+.PHONY : tests_fivee/fast
 
 #=============================================================================
-# Target rules for targets named nod_tests
+# Target rules for targets named gmock
 
 # Build rule for target.
-nod_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nod_tests
-.PHONY : nod_tests
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
 
 # fast build rule for target.
-nod_tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_tests.dir/build.make CMakeFiles/nod_tests.dir/build
-.PHONY : nod_tests/fast
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+#=============================================================================
+# Target rules for targets named gmock_main
 
-# target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_main.dir/build.make CMakeFiles/nod_main.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
 
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_main.dir/build.make CMakeFiles/nod_main.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+#=============================================================================
+# Target rules for targets named gtest
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
 
-# target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_main.dir/build.make CMakeFiles/nod_main.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
 
-src/nod.o: src/nod.cpp.o
-.PHONY : src/nod.o
+#=============================================================================
+# Target rules for targets named gtest_main
 
-# target to build an object file
-src/nod.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_lib.dir/build.make CMakeFiles/nod_lib.dir/src/nod.cpp.o
-.PHONY : src/nod.cpp.o
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
 
-src/nod.i: src/nod.cpp.i
-.PHONY : src/nod.i
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
 
-# target to preprocess a source file
-src/nod.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_lib.dir/build.make CMakeFiles/nod_lib.dir/src/nod.cpp.i
-.PHONY : src/nod.cpp.i
-
-src/nod.s: src/nod.cpp.s
-.PHONY : src/nod.s
-
-# target to generate assembly for a file
-src/nod.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_lib.dir/build.make CMakeFiles/nod_lib.dir/src/nod.cpp.s
-.PHONY : src/nod.cpp.s
-
-test/tests_nod.o: test/tests_nod.cpp.o
-.PHONY : test/tests_nod.o
+main.o: main.cpp.o
+.PHONY : main.o
 
 # target to build an object file
-test/tests_nod.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_tests.dir/build.make CMakeFiles/nod_tests.dir/test/tests_nod.cpp.o
-.PHONY : test/tests_nod.cpp.o
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-test/tests_nod.i: test/tests_nod.cpp.i
-.PHONY : test/tests_nod.i
+main.i: main.cpp.i
+.PHONY : main.i
 
 # target to preprocess a source file
-test/tests_nod.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_tests.dir/build.make CMakeFiles/nod_tests.dir/test/tests_nod.cpp.i
-.PHONY : test/tests_nod.cpp.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-test/tests_nod.s: test/tests_nod.cpp.s
-.PHONY : test/tests_nod.s
+main.s: main.cpp.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-test/tests_nod.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nod_tests.dir/build.make CMakeFiles/nod_tests.dir/test/tests_nod.cpp.s
-.PHONY : test/tests_nod.cpp.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/main.cpp.s
+.PHONY : main.cpp.s
+
+src/fivee.o: src/fivee.cpp.o
+.PHONY : src/fivee.o
+
+# target to build an object file
+src/fivee.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/src/fivee.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/src/fivee.cpp.o
+.PHONY : src/fivee.cpp.o
+
+src/fivee.i: src/fivee.cpp.i
+.PHONY : src/fivee.i
+
+# target to preprocess a source file
+src/fivee.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/src/fivee.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/src/fivee.cpp.i
+.PHONY : src/fivee.cpp.i
+
+src/fivee.s: src/fivee.cpp.s
+.PHONY : src/fivee.s
+
+# target to generate assembly for a file
+src/fivee.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/src/fivee.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/src/fivee.cpp.s
+.PHONY : src/fivee.cpp.s
+
+tests/tests_fivee.o: tests/tests_fivee.cpp.o
+.PHONY : tests/tests_fivee.o
+
+# target to build an object file
+tests/tests_fivee.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/tests/tests_fivee.cpp.o
+.PHONY : tests/tests_fivee.cpp.o
+
+tests/tests_fivee.i: tests/tests_fivee.cpp.i
+.PHONY : tests/tests_fivee.i
+
+# target to preprocess a source file
+tests/tests_fivee.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/tests/tests_fivee.cpp.i
+.PHONY : tests/tests_fivee.cpp.i
+
+tests/tests_fivee.s: tests/tests_fivee.cpp.s
+.PHONY : tests/tests_fivee.s
+
+# target to generate assembly for a file
+tests/tests_fivee.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/tests/tests_fivee.cpp.s
+.PHONY : tests/tests_fivee.cpp.s
 
 # Help Target
 help:
@@ -234,19 +331,27 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... nod_lib"
-	@echo "... nod_main"
-	@echo "... nod_tests"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/nod.o"
-	@echo "... src/nod.i"
-	@echo "... src/nod.s"
-	@echo "... test/tests_nod.o"
-	@echo "... test/tests_nod.i"
-	@echo "... test/tests_nod.s"
+	@echo "... test"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
+	@echo "... lab2"
+	@echo "... tests_fivee"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... src/fivee.o"
+	@echo "... src/fivee.i"
+	@echo "... src/fivee.s"
+	@echo "... tests/tests_fivee.o"
+	@echo "... tests/tests_fivee.i"
+	@echo "... tests/tests_fivee.s"
 .PHONY : help
 
 

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libnod_lib.a CMakeFiles/nod_lib.dir/src/nod.cpp.o
-/usr/bin/ranlib libnod_lib.a
