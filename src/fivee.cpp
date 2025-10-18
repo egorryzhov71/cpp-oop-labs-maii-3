@@ -76,6 +76,24 @@ Five::Five(const Five& other) : size(other.size){
     }
 }
 
+Five& Five::operator=(const Five& other) {
+    if (this != &other) {
+        delete[] data;
+        
+        size = other.size;
+        if (size == 0) {
+            data = nullptr;
+        } else {
+            data = new unsigned char[size];
+            for (size_t i = 0; i < size; ++i) {
+                data[i] = other.data[i];
+            }
+        }
+    }
+    return *this; 
+}
+
+
 Five::Five(Five&& other) noexcept : data(other.data), size(other.size) { 
     other.data = nullptr;
     other.size = 0;
@@ -117,7 +135,7 @@ Five Five::plus(const Five& other) const {
 
 Five Five::minus(const Five& other) const {
     if (this->less(other)) {
-        throw std::underflow_error("Cannot subtract larger number");
+        throw std::underflow_error("Невозможно вычесть из меньшего большее.");
     }
     
     Five result(*this);

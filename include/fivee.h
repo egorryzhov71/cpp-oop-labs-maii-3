@@ -15,6 +15,7 @@ class Five {
         Five(const Five& other);
         Five(Five&& other) noexcept;
         ~Five() noexcept;
+        Five& operator=(const Five& other);
 
         size_t getsize() const;
         unsigned char* getdata() const;
