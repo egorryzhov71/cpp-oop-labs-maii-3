@@ -1,23 +1,106 @@
-#include "/workspaces/C++/include/fivee.h"
+#include "/workspaces/C++/include/TRS.h"
 #include <iostream>
+#include <vector>
 
-int main(){
-    try{
-        Five num1("3");    
-        Five num2("10");   
-        Five num3("123");   
-        Five num4("44444");  
+int main() {
+    std::vector<Figure*> figures;
+    int choice;
+    
+    std::cout << "=== СИСТЕМА УПРАВЛЕНИЯ ФИГУРАМИ ===" << std::endl;
+    
+    do {
+        std::cout << "\nМЕНЮ:" << std::endl;
+        std::cout << "1. Добавить квадрат" << std::endl;
+        std::cout << "2. Добавить прямоугольник" << std::endl;
+        std::cout << "3. Добавить трапецию" << std::endl;
+        std::cout << "4. Показать информацию о всех фигурах" << std::endl;
+        std::cout << "5. Вычислить общую площадь" << std::endl;
+        std::cout << "6. Удалить фигуру по индексу" << std::endl;
+        std::cout << "0. Выход" << std::endl;
+        std::cout << "Выберите действие: ";
+        std::cin >> choice;
         
-        std::cout << "3: " << num1.tostring() << std::endl;
-        std::cout << "10: " << num2.tostring() << std::endl; 
-        std::cout << "123: " << num3.tostring() << std::endl;
-        std::cout << "44444: " << num4.tostring() << std::endl;
-        
-        Five sum = num1.plus(num2);
-        std::cout << "3 + 10 = " << sum.tostring() << std::endl;
-
-    } catch (const std::exception& e){
-        std::cerr << "Ошибка: " << e.what() << std::endl;
+        switch(choice) {
+            case 1: {
+                Square* square = new Square();
+                std::cout << "Введите данные квадрата:" << std::endl;
+                std::cin >> *square;
+                figures.push_back(square);
+                std::cout << "Квадрат добавлен!" << std::endl;
+                break;
+            }
+            case 2: {
+                Rectangle* rect = new Rectangle();
+                std::cout << "Введите данные прямоугольника:" << std::endl;
+                std::cin >> *rect;
+                figures.push_back(rect);
+                std::cout << "Прямоугольник добавлен!" << std::endl;
+                break;
+            }
+            case 3: {
+                Trapezoid* trap = new Trapezoid();
+                std::cout << "Введите данные трапеции:" << std::endl;
+                std::cin >> *trap;
+                figures.push_back(trap);
+                std::cout << "Трапеция добавлена!" << std::endl;
+                break;
+            }
+            case 4: {
+                if (figures.empty()) {
+                    std::cout << "Нет фигур для отображения." << std::endl;
+                } else {
+                    std::cout << "\n=== ИНФОРМАЦИЯ О ФИГУРАХ ===" << std::endl;
+                    for (size_t i = 0; i < figures.size(); i++) {
+                        std::cout << "\n--- Фигура " << i << " ---" << std::endl;
+                        auto center = figures[i]->getCenter();
+                        std::cout << "Геометрический центр: (" << center.first << ", " << center.second << ")" << std::endl;
+                        std::cout << "Площадь: " << figures[i]->area() << std::endl;
+                        std::cout << "Вершины: " << *figures[i] << std::endl;
+                    }
+                }
+                break;
+            }
+            case 5: {
+                if (figures.empty()) {
+                    std::cout << "Нет фигур для вычисления площади." << std::endl;
+                } else {
+                    double total = 0;
+                    for (auto fig : figures) {
+                        total += fig->area();
+                    }
+                    std::cout << "Общая площадь всех фигур: " << total << std::endl;
+                }
+                break;
+            }
+            case 6: {
+                if (figures.empty()) {
+                    std::cout << "Нет фигур для удаления." << std::endl;
+                } else {
+                    int index;
+                    std::cout << "Введите индекс фигуры для удаления (0-" << figures.size()-1 << "): ";
+                    std::cin >> index;
+                    if (index >= 0 && index < figures.size()) {
+                        delete figures[index];
+                        figures.erase(figures.begin() + index);
+                        std::cout << "Фигура удалена!" << std::endl;
+                    } else {
+                        std::cout << "Неверный индекс!" << std::endl;
+                    }
+                }
+                break;
+            }
+            case 0:
+                std::cout << "Выход из программы..." << std::endl;
+                break;
+            default:
+                std::cout << "Неверный выбор!" << std::endl;
+        }
+    } while (choice != 0);
+    
+    // Очистка памяти
+    for (auto fig : figures) {
+        delete fig;
     }
+    
     return 0;
 }
