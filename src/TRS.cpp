@@ -1,6 +1,7 @@
+#include <utility>
 #include <iostream>
 #include "/workspaces/C++/include/TRS.h"
-#include <utility>
+
 
 std::ostream& operator<<(std::ostream& os, const Figure& fig){
     fig.printVertices(os);
@@ -35,22 +36,25 @@ void Square::readData(std::istream& is){
     is >> x >> y >> side;
 }
 
-Square& Square::operator=(const Figure& other){
+Square& Square::operator=(const Figure& other) {
     const Square* otherSquare = dynamic_cast<const Square*>(&other);
-    if (otherSquare != nullptr){
-        x = otherSquare -> x;
-        y = otherSquare -> y;
-        side = otherSquare -> side;
+    if (otherSquare != nullptr) {
+        x = otherSquare->x;
+        y = otherSquare->y;
+        side = otherSquare->side;
     }
     return *this;
 }
 
-Square& Square::operator=(Figure&& other){
+Square& Square::operator=(Figure&& other) {
     Square* otherSquare = dynamic_cast<Square*>(&other);
-    if (otherSquare != nullptr){
-        x = std::exchange(otherSquare -> x, 0);
-        y = std::exchange(otherSquare -> y, 0);
-        side = std::exchange(otherSquare -> side, 0);
+    if (otherSquare != nullptr) {
+        x = otherSquare->x;
+        y = otherSquare->y;
+        side = otherSquare->side;
+        otherSquare->x = 0;
+        otherSquare->y = 0;
+        otherSquare->side = 0;
     }
     return *this;
 }
@@ -63,11 +67,12 @@ bool Square::operator==(const Figure& other) const {
     return (x == otherSquare -> x) && (y == otherSquare -> y) && (side == otherSquare -> side);
 }
 
+
 Trapezoid::Trapezoid(double x, double y, double base1, double base2, double height) : 
     x(x), y(y), base1(base1), base2(base2), height(height){}
 
 
-std::pair<double, double> Square::getCenter() const {
+std::pair<double, double> Trapezoid::getCenter() const {
     return {x, y};
 }
 
@@ -103,14 +108,19 @@ Trapezoid& Trapezoid::operator=(const Figure& other){
     return *this;
 }
 
-Trapezoid& Trapezoid::operator=(Figure&& other){
-    Trapezoid* other_Trapezoid = dynamic_cast<Trapezoid*>(&other);
-    if (other_Trapezoid != nullptr){
-        x = std::exchange(other_Trapezoid -> x, 0);
-        y = std::exchange(other_Trapezoid -> y, 0);
-        base1 = std::exchange(other_Trapezoid -> base1, 0);
-        base2 = std::exchange(other_Trapezoid -> base2, 0);
-        height = std::exchange(other_Trapezoid -> height, 0);
+Trapezoid& Trapezoid::operator=(Figure&& other) {
+    Trapezoid* otherTrap = dynamic_cast<Trapezoid*>(&other);
+    if (otherTrap != nullptr) {
+        x = otherTrap->x;
+        y = otherTrap->y;
+        base1 = otherTrap->base1;
+        base2 = otherTrap->base2;
+        height = otherTrap->height;
+        otherTrap->x = 0;
+        otherTrap->y = 0;
+        otherTrap->base1 = 0;
+        otherTrap->base2 = 0;
+        otherTrap->height = 0;
     }
     return *this;
 }
@@ -163,10 +173,14 @@ Rectangle& Rectangle::operator=(const Figure& other) {
 Rectangle& Rectangle::operator=(Figure&& other) {
     Rectangle* otherRect = dynamic_cast<Rectangle*>(&other);
     if (otherRect != nullptr) {
-        x = std::exchange(otherRect->x, 0);
-        y = std::exchange(otherRect->y, 0);
-        width = std::exchange(otherRect->width, 0);
-        height = std::exchange(otherRect->height, 0);
+        x = otherRect->x;
+        y = otherRect->y;
+        width = otherRect->width;
+        height = otherRect->height;
+        otherRect->x = 0;
+        otherRect->y = 0;
+        otherRect->width = 0;
+        otherRect->height = 0;
     }
     return *this;
 }
