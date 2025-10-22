@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/tests_fivee.dir/tests/tests_fivee.cpp.o CMakeFiles/tests_fivee.dir/src/fivee.cpp.o -o tests_fivee  lib/libgtest_main.a lib/libgtest.a 

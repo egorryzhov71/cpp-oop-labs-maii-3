@@ -95,51 +95,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/C++/build/CMakeFiles /workspaces/C++/build//CMakeFiles/progress.marks
@@ -172,89 +127,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab2
+# Target rules for targets named figures_program
 
 # Build rule for target.
-lab2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2
-.PHONY : lab2
+figures_program: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 figures_program
+.PHONY : figures_program
 
 # fast build rule for target.
-lab2/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/build
-.PHONY : lab2/fast
+figures_program/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_program.dir/build.make CMakeFiles/figures_program.dir/build
+.PHONY : figures_program/fast
 
 #=============================================================================
-# Target rules for targets named tests_fivee
+# Target rules for targets named figures_tests
 
 # Build rule for target.
-tests_fivee: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests_fivee
-.PHONY : tests_fivee
+figures_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 figures_tests
+.PHONY : figures_tests
 
 # fast build rule for target.
-tests_fivee/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/build
-.PHONY : tests_fivee/fast
-
-#=============================================================================
-# Target rules for targets named gmock
-
-# Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
-
-# fast build rule for target.
-gmock/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
+figures_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_tests.dir/build.make CMakeFiles/figures_tests.dir/build
+.PHONY : figures_tests/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_program.dir/build.make CMakeFiles/figures_program.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -262,7 +165,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_program.dir/build.make CMakeFiles/figures_program.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -270,59 +173,59 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_program.dir/build.make CMakeFiles/figures_program.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/fivee.o: src/fivee.cpp.o
-.PHONY : src/fivee.o
+src/TRS.o: src/TRS.cpp.o
+.PHONY : src/TRS.o
 
 # target to build an object file
-src/fivee.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/src/fivee.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/src/fivee.cpp.o
-.PHONY : src/fivee.cpp.o
+src/TRS.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_program.dir/build.make CMakeFiles/figures_program.dir/src/TRS.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_tests.dir/build.make CMakeFiles/figures_tests.dir/src/TRS.cpp.o
+.PHONY : src/TRS.cpp.o
 
-src/fivee.i: src/fivee.cpp.i
-.PHONY : src/fivee.i
+src/TRS.i: src/TRS.cpp.i
+.PHONY : src/TRS.i
 
 # target to preprocess a source file
-src/fivee.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/src/fivee.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/src/fivee.cpp.i
-.PHONY : src/fivee.cpp.i
+src/TRS.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_program.dir/build.make CMakeFiles/figures_program.dir/src/TRS.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_tests.dir/build.make CMakeFiles/figures_tests.dir/src/TRS.cpp.i
+.PHONY : src/TRS.cpp.i
 
-src/fivee.s: src/fivee.cpp.s
-.PHONY : src/fivee.s
+src/TRS.s: src/TRS.cpp.s
+.PHONY : src/TRS.s
 
 # target to generate assembly for a file
-src/fivee.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/src/fivee.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/src/fivee.cpp.s
-.PHONY : src/fivee.cpp.s
+src/TRS.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_program.dir/build.make CMakeFiles/figures_program.dir/src/TRS.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_tests.dir/build.make CMakeFiles/figures_tests.dir/src/TRS.cpp.s
+.PHONY : src/TRS.cpp.s
 
-tests/tests_fivee.o: tests/tests_fivee.cpp.o
-.PHONY : tests/tests_fivee.o
+tests/tests_figures_simple.o: tests/tests_figures_simple.cpp.o
+.PHONY : tests/tests_figures_simple.o
 
 # target to build an object file
-tests/tests_fivee.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/tests/tests_fivee.cpp.o
-.PHONY : tests/tests_fivee.cpp.o
+tests/tests_figures_simple.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_tests.dir/build.make CMakeFiles/figures_tests.dir/tests/tests_figures_simple.cpp.o
+.PHONY : tests/tests_figures_simple.cpp.o
 
-tests/tests_fivee.i: tests/tests_fivee.cpp.i
-.PHONY : tests/tests_fivee.i
+tests/tests_figures_simple.i: tests/tests_figures_simple.cpp.i
+.PHONY : tests/tests_figures_simple.i
 
 # target to preprocess a source file
-tests/tests_fivee.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/tests/tests_fivee.cpp.i
-.PHONY : tests/tests_fivee.cpp.i
+tests/tests_figures_simple.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_tests.dir/build.make CMakeFiles/figures_tests.dir/tests/tests_figures_simple.cpp.i
+.PHONY : tests/tests_figures_simple.cpp.i
 
-tests/tests_fivee.s: tests/tests_fivee.cpp.s
-.PHONY : tests/tests_fivee.s
+tests/tests_figures_simple.s: tests/tests_figures_simple.cpp.s
+.PHONY : tests/tests_figures_simple.s
 
 # target to generate assembly for a file
-tests/tests_fivee.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests_fivee.dir/build.make CMakeFiles/tests_fivee.dir/tests/tests_fivee.cpp.s
-.PHONY : tests/tests_fivee.cpp.s
+tests/tests_figures_simple.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures_tests.dir/build.make CMakeFiles/figures_tests.dir/tests/tests_figures_simple.cpp.s
+.PHONY : tests/tests_figures_simple.cpp.s
 
 # Help Target
 help:
@@ -331,27 +234,19 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... gmock"
-	@echo "... gmock_main"
-	@echo "... gtest"
-	@echo "... gtest_main"
-	@echo "... lab2"
-	@echo "... tests_fivee"
+	@echo "... figures_program"
+	@echo "... figures_tests"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/fivee.o"
-	@echo "... src/fivee.i"
-	@echo "... src/fivee.s"
-	@echo "... tests/tests_fivee.o"
-	@echo "... tests/tests_fivee.i"
-	@echo "... tests/tests_fivee.s"
+	@echo "... src/TRS.o"
+	@echo "... src/TRS.i"
+	@echo "... src/TRS.s"
+	@echo "... tests/tests_figures_simple.o"
+	@echo "... tests/tests_figures_simple.i"
+	@echo "... tests/tests_figures_simple.s"
 .PHONY : help
 
 
