@@ -1,6 +1,6 @@
 #include <iostream>
 #include "/workspaces/C++/include/TRS.h"
-
+#include <utility>
 
 std::ostream& operator<<(std::ostream& os, const Figure& fig){
     fig.printVertices(os);

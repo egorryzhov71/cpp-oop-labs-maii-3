@@ -57,7 +57,6 @@ class Rectangle : public Figure {
         void printVertices(std::ostream& os) const override;
         void readData(std::istream& is) override;
 
-        bool operator==(const Figure& other) const override;
 
 };
 
@@ -78,7 +77,6 @@ class Trapezoid : public Figure {
         void printVertices(std::ostream& os) const override;
         void readData(std::istream& is) override;
 
-        bool operator==(const Figure& other) const override;
 
 
 };
