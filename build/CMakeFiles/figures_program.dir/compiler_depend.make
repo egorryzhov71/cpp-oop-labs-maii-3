@@ -189,7 +189,7 @@ CMakeFiles/figures_program.dir/main.cpp.o: ../main.cpp \
 
 CMakeFiles/figures_program.dir/src/TRS.cpp.o: ../src/TRS.cpp \
   /usr/include/stdc-predef.h \
-  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/utility \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h \
@@ -201,6 +201,12 @@ CMakeFiles/figures_program.dir/src/TRS.cpp.o: ../src/TRS.cpp \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
   /usr/include/c++/11/iosfwd \
@@ -230,8 +236,6 @@ CMakeFiles/figures_program.dir/src/TRS.cpp.o: ../src/TRS.cpp \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/hash_bytes.h \
   /usr/include/c++/11/new \
-  /usr/include/c++/11/bits/move.h \
-  /usr/include/c++/11/type_traits \
   /usr/include/c++/11/bits/nested_exception.h \
   /usr/include/c++/11/bits/char_traits.h \
   /usr/include/c++/11/bits/stl_algobase.h \
@@ -239,7 +243,6 @@ CMakeFiles/figures_program.dir/src/TRS.cpp.o: ../src/TRS.cpp \
   /usr/include/c++/11/bits/cpp_type_traits.h \
   /usr/include/c++/11/ext/type_traits.h \
   /usr/include/c++/11/ext/numeric_traits.h \
-  /usr/include/c++/11/bits/stl_pair.h \
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
   /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/11/bits/concept_check.h \
@@ -307,7 +310,6 @@ CMakeFiles/figures_program.dir/src/TRS.cpp.o: ../src/TRS.cpp \
   /usr/include/c++/11/bits/stl_function.h \
   /usr/include/c++/11/backward/binders.h \
   /usr/include/c++/11/bits/range_access.h \
-  /usr/include/c++/11/initializer_list \
   /usr/include/c++/11/bits/basic_string.h \
   /usr/include/c++/11/ext/alloc_traits.h \
   /usr/include/c++/11/bits/alloc_traits.h \
@@ -369,9 +371,7 @@ CMakeFiles/figures_program.dir/src/TRS.cpp.o: ../src/TRS.cpp \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/vector.tcc \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h
+  /usr/include/c++/11/bits/vector.tcc
 
 
 ../src/TRS.cpp:
